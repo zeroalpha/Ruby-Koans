@@ -14,7 +14,15 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+	sides = [a,b,c]
+  case 
+  when sides.uniq.size == 1
+  	:equilateral
+  when sides.map{|s| sides.count(s)}.any?{|c| c > 1}
+  	:isosceles
+  else
+  	:scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
