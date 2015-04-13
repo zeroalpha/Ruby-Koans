@@ -15,6 +15,8 @@
 #
 def triangle(a, b, c)
 	sides = [a,b,c]
+	raise(TriangleError, "The sides have to be positive non-null values") if sides.any?{|s| s <= 0}
+  raise(TriangleError, "The sides do not add up to a Triangle (too short)") if sides.any?{|s| sides.sort[0..1].inject(:+) <= sides.sort[2]}
   case 
   when sides.uniq.size == 1
   	:equilateral
@@ -23,6 +25,10 @@ def triangle(a, b, c)
   else
   	:scalene
   end
+end
+
+def check_input(a,b,c)
+
 end
 
 # Error class used in part 2.  No need to change this code.
